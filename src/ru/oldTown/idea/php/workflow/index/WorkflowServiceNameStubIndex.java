@@ -1,4 +1,4 @@
-package ru.oldTown.idea.php.workflow;
+package ru.oldTown.idea.php.workflow.index;
 
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
@@ -12,13 +12,13 @@ import com.jetbrains.php.lang.psi.elements.PhpClass;
 import com.jetbrains.php.lang.psi.stubs.indexes.PhpConstantNameIndex;
 import gnu.trove.THashMap;
 import org.jetbrains.annotations.NotNull;
-import com.intellij.util.indexing.ScalarIndexExtension;
 import ru.oldTown.idea.php.workflow.util.AnnotationUtil;
+
 import java.util.Map;
 
 
-public class AnnotationStubIndex extends FileBasedIndexExtension<String, Void> {
-    public static final ID<String, Void> KEY = ID.create("ru.oldTown.idea.php.annotation.classes");
+public class WorkflowServiceNameStubIndex extends FileBasedIndexExtension<String, Void> {
+    public static final ID<String, Void> KEY = ID.create(" ru.oldTown.idea.php.workflow.services");
     private final KeyDescriptor<String> myKeyDescriptor = new EnumeratorStringDescriptor();
 
     @NotNull
@@ -61,10 +61,11 @@ public class AnnotationStubIndex extends FileBasedIndexExtension<String, Void> {
                             return;
                         }
 
-                        if (AnnotationUtil.isWorkflowServiceClass(phpClass)) {
-                            map.put(fqn, null);
-                        }
+                        String serviceName = AnnotationUtil.getWorkflowServiceName(phpClass);
 
+                        if (null != serviceName) {
+                            map.put(serviceName, null);
+                        }
                     }
 
                 });

@@ -1,31 +1,37 @@
 <idea-plugin version="2">
-  <id>ru.oldTown.idea.php.workflow</id>
-  <name>Workflow</name>
-  <version>1.0</version>
-  <vendor email="and-rey2@yandex.ru" url="https://github.com/old-town/idea-php-workflow">Old Town</vendor>
+    <id>ru.oldTown.idea.php.workflow</id>
+    <name>Workflow</name>
+    <version>1.0</version>
+    <vendor email="and-rey2@yandex.ru" url="https://github.com/old-town/idea-php-workflow">OldTown</vendor>
 
-  <description><![CDATA[
+    <description><![CDATA[
     Plugin fo workflow
   ]]></description>
 
-  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-  <idea-version since-build="141.0"/>
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="8000"/>
 
-  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
-       on how to target different products -->
-  <!-- uncomment to enable plugin in all products
-  <depends>com.intellij.modules.lang</depends>
-  -->
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.jetbrains.php</depends>
 
-  <extensions defaultExtensionNs="com.intellij">
 
-    <fileBasedIndex implementation="ru.oldTown.idea.php.workflow.AnnotationStubIndex"/>
+    <extensions defaultExtensionNs="com.intellij">
 
-    <!-- Add your extensions here -->
-  </extensions>
+        <fileBasedIndex implementation="ru.oldTown.idea.php.workflow.index.WorkflowServiceNameStubIndex"/>
 
-  <actions>
-    <!-- Add your actions here -->
-  </actions>
+    </extensions>
+
+
+
+
+
+    <actions>
+        <!-- Add your actions here -->
+    </actions>
 
 </idea-plugin>
